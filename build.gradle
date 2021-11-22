@@ -1,7 +1,49 @@
+plugins {
+	id 'com.github.ben-manes.versions' version '0.39.0'
+	id 'application'
+	id 'checkstyle'
+	id 'jacoco'
+	id 'com.adarshr.test-logger' version '3.0.0'
+}
+
 group = 'hexlet.code'
 version = '1.0-SNAPSHOT'
+
+application {
+	mainClass = 'hexlet.code.Validator'
+}
 
 compileJava {
 	options.release = 16
 }
+
+repositories {
+	mavenCentral()
+}
+
+test {
+	useJUnitPlatform()
+}
+
+dependencies {
+	implementation 'junit:junit:4.13.2'
+	implementation 'org.junit.jupiter:junit-jupiter-api:5.8.1'
 	
+	implementation 'org.assertj:assertj-core:3.21.0'
+}
+
+tasks.named('test') {
+	useJUnitPlatform()
+	finalizedBy jacocoTestReport
+}
+
+jacocoTestReport {
+	dependsOn test
+ 	reports {
+    		xml.required = true
+	}
+}
+
+jacoco {
+	toolVersion = "0.8.7"
+}
