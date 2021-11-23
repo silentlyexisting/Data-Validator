@@ -3,8 +3,8 @@ package hexlet.code;
 import hexlet.code.schemas.StringSchema;
 import org.junit.jupiter.api.Test;
 
+import static org.junit.jupiter.api.Assertions.assertFalse;
 import static org.junit.jupiter.api.Assertions.assertTrue;
-import static org.assertj.core.api.Assertions.assertThat;
 
 
 
@@ -28,25 +28,23 @@ class StringSchemaTest {
     @Test
     void testMinLength3() {
         schema.required();
-        assertTrue(schema.minLength(LENGTH).isValid(null));
+        assertFalse(schema.minLength(LENGTH).isValid(null));
     }
 
     @Test
     void testMinLength4() {
         schema.required();
-        assertTrue(schema.minLength(LENGTH).isValid(""));
+        assertFalse(schema.minLength(LENGTH).isValid(""));
     }
 
     @Test
     void testRequired1() {
-//        assertEquals(schema.required().isValid(""), true);
-        assertThat(schema.required().isValid("")).isEqualTo(true);
+        assertFalse(schema.required().isValid(""));
     }
 
     @Test
     void testRequired2() {
-//        assertEquals(schema.required().isValid(null), true);
-        assertThat(schema.required().isValid(null)).isEqualTo(true);
+        assertFalse(schema.required().isValid(null));
     }
 
     @Test
@@ -56,7 +54,7 @@ class StringSchemaTest {
 
     @Test
     void testContains2() {
-        assertTrue(schema.contains("whatthe").isValid("what does the fox say"));
+        assertFalse(schema.contains("whatthe").isValid("what does the fox say"));
     }
 
 }
