@@ -49,11 +49,13 @@ class StringSchemaTest {
 
     @Test
     void testContains1() {
+        schema.required();
         assertTrue(schema.contains("what").isValid("what does the fox say"));
     }
 
     @Test
     void testContains2() {
+        schema.required();
         assertFalse(schema.contains("whatthe").isValid("what does the fox say"));
     }
 
