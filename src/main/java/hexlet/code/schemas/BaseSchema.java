@@ -5,20 +5,21 @@ import java.util.List;
 import java.util.function.Predicate;
 
 public class BaseSchema {
-    private static List<Predicate<Object>> list = new ArrayList<>();
+    private List<Predicate<Object>> predicates = new ArrayList<>();
     /**
      * @param predicate
+     * adds predicates to list
      */
-    public void add(Predicate<Object> predicate) {
-        list.add(predicate);
+    public void addPredicate(Predicate<Object> predicate) {
+        this.predicates.add(predicate);
     }
     /**
      * @param o
      * @return instance of Boolean
      */
     public Boolean isValid(Object o) {
-        for (Predicate<Object> s : list) {
-            if (!s.test(o)) {
+        for (Predicate<Object> p : predicates) {
+            if (!p.test(o)) {
                 return false;
             }
         }
