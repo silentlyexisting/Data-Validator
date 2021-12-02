@@ -1,6 +1,6 @@
-make install: 
-	./gradlew clean install
-	
+clean:
+	./gradlew clean
+
 run-dist:
 	./build/install/app/bin/app
 	
