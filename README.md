@@ -19,12 +19,6 @@
 
 <b>Пример использования:</b>
 ```java
-import code.Validator;
-import code.schemas.StringSchema;
-import code.schemas.NumberSchema;
-import code.schemas.MapSchema;
-import code.schemas.BaseSchema;
-
 Validator validator = new Validator();
 
 // строки
